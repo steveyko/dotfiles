@@ -26,3 +26,6 @@ cp ./solarizedmine.vim $HOME/.local/share/nvim/site/pack/plugins/start/lightline
 
 # Copy fish fzf setup
 cp fish_user_key_bindings.fish $HOME/.config/fish/functions/
+
+# Copy fish config
+cp config.fish $HOME/.config/fish/
