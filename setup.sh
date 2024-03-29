@@ -29,3 +29,17 @@ cp fish_user_key_bindings.fish $HOME/.config/fish/functions/
 
 # Copy fish config
 cp config.fish $HOME/.config/fish/
+
+# Install oh-my-zsh.
+pushd .
+cd $HOME; sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
+popd
+
+# Install zsh-autosuggestions.
+pushd .
+cd $HOME/.oh-my-zsh/plugins/; git clone --depth=1 https://github.com/zsh-users/zsh-autosuggestions.git
+popd
+
+# Copy .zshrc.
+cp zshrc.regular $HOME/.zshrc
+chmod 644 $HOME/.zshrc

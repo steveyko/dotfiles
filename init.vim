@@ -21,7 +21,6 @@ if !exists('g:vscode')
   colorscheme solarized
   set background=dark
   set cursorline
-  set cursorcolumn
   set noshowmode
   set showtabline=2
   set rtp+=/usr/bin/fzf
