@@ -55,7 +55,7 @@ if !exists('g:vscode')
   let g:ale_completion_enabled = 1
   let g:ale_linters = { 'cpp': ['clangtidy', 'clang'], 'c': ['clangtidy', 'clang'],
         \ 'cmake': ['cmake_lint', 'cmake'], 'python': ['flake8'], 'sh': ['shellcheck'],
-        \ 'rust': ['analyzer'] }
+        \ 'rust': ['analyzer'], 'tex': ['lacheck'] }
   let g:ale_fixers = { 'cpp': ['clang-format'], 'c': ['clang-format'], 'cmake': ['cmakeformat'],
         \ 'rust': ['rustfmt'], 'python': ['autopep8'],
         \ '*': ['remove_trailing_lines', 'trim_whitespace'] }
