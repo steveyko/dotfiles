@@ -1,22 +1,22 @@
 #!/bin/bash
 
+OS=$(uname -s | tr '[:upper:]' '[:lower:]')
+
 # Install oh-my-zsh.
 pushd .
 cd "$HOME"; sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
 popd
 
-# Install zsh-autosuggestions.
-pushd .
-cd "$HOME"/.oh-my-zsh/plugins/; git clone https://github.com/zsh-users/zsh-autosuggestions.git
-popd
-
 # Copy .zshrc.
-cp zshrc "$HOME"/.zshrc
+cp zshrc."$OS" "$HOME"/.zshrc
 chmod 644 "$HOME"/.zshrc
 
-OS=$(uname -s | tr '[:upper:]' '[:lower:]')
-
 if [ "$OS" == "linux" ]; then
+  # Install zsh-autosuggestions.
+  pushd .
+  cd "$HOME"/.oh-my-zsh/plugins/; git clone https://github.com/zsh-users/zsh-autosuggestions.git
+  popd
+
   # Copy foot.ini
   mkdir -p "$HOME"/.config/foot
   cp ./foot.ini "$HOME"/.config/foot
@@ -57,7 +57,7 @@ elif [ "$OS" == "darwin" ]; then
   brew install --cask arc
   brew install --cask alacritty
   brew install --cask mactex-no-gui
-  brew install neovim fzf tmux gh zsh-syntax-highlighting
+  brew install neovim fzf tmux gh zsh-syntax-highlighting zsh-autosuggestions
 fi
 
 # Copy .tmux.conf.

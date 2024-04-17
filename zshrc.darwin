@@ -1,0 +1,14 @@
+export ZSH="/Users/steveyko/.oh-my-zsh"
+ZSH_THEME="alanpeabody"
+plugins=(vi-mode fzf gh git colored-man-pages zsh-autosuggestions)
+source $ZSH/oh-my-zsh.sh
+export EDITOR=/opt/homebrew/bin/nvim
+PS1='%F{blue}%~%F{green}'$'\u276f''%f '
+ulimit -S -n 262144
+source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+if command -v pyenv 1>/dev/null 2>&1; then
+  eval "$(pyenv init -)"
+fi
+alias exa='exa -al --git --icons'
+ZSH_AUTOSUGGEST_STRATEGY=(history completion)
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=10"
