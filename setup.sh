@@ -91,3 +91,6 @@ cp ./config.lua."$OS" "$HOME"/.config/nvim/lua/
 
 # Copy a customized solarized theme for lightline with the right permissions.
 cp ./solarizedmine.vim "$HOME"/.local/share/nvim/site/pack/plugins/start/lightline.vim/autoload/lightline/colorscheme/
+
+# Copy .gitconfig
+cp gitconfig "$HOME"/.gitconfig

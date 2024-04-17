@@ -1,0 +1,9 @@
+[init]
+	defaultBranch = main
+[pull]
+	rebase = true
+[user]
+	email = steveyko@sfu.ca
+	name = Steve Ko
+[color]
+	ui = auto
