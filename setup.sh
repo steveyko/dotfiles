@@ -43,9 +43,9 @@ if [ "$OS" == "linux" ]; then
   sudo DEBIAN_FRONTEND=noninteractive apt install bash-completion btop git neovim lua5.1 acl language-pack-en fzf tmux xclip clang clang-tools clang-tidy clang-format make cmake fortune-mod exa glow gh wcanadian zsh-syntax-highlighting python3-pip cgdb tree shc inotify-tools shellcheck asciinema pv toilet manpages-dev manpages-posix-dev libssl-dev -y
   sudo DEBIAN_FRONTEND=noninteractive apt upgrade -y
 elif [ "$OS" == "darwin" ]; then
-  # Copy alacritty.yml.
+  # Copy alacritty.toml.
   mkdir -p "$HOME"/.config/alacritty
-  cp alacritty.yml "$HOME"/.config/alacritty/
+  cp alacritty.toml "$HOME"/.config/alacritty/
 
   # Install Homebrew.
   if [ ! -e "/opt/homebrew/bin/brew" ]; then
