@@ -64,6 +64,7 @@ if !exists('g:vscode')
   let g:ale_fix_on_save = 1
   let g:rainbow_active = 1
   let g:sneak#label = 1
+  let g:sneak#use_ic_scs = 1
   let g:highlightedyank_highlight_duration = 300
   let g:vim_json_conceal = 0
   let g:markdown_syntax_conceal = 0
