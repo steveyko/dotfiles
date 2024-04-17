@@ -24,6 +24,7 @@ if !exists('g:vscode')
   set noshowmode
   set showtabline=2
   set rtp+=/usr/bin/fzf
+  let g:indentLine_fileTypeExclude = ['tex', 'markdown']
   let g:lightline#bufferline#unnamed = '[No Name]'
   let g:lightline#bufferline#enable_devicons = 1
   let g:lightline = {

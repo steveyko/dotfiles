@@ -2,9 +2,19 @@
 
 OS=$(uname -s | tr '[:upper:]' '[:lower:]')
 
-# Install oh-my-zsh.
+if [ ! -e "$HOME/.oh-my-zsh/oh-my-zsh.sh" ]; then
+  # Install oh-my-zsh.
+  pushd .
+  cd "$HOME"; sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
+  popd
+fi
+
+# Install zsh-autosuggestions.
 pushd .
-cd "$HOME"; sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
+cd "$HOME"/.oh-my-zsh/custom/plugins/
+git clone https://github.com/zsh-users/zsh-autosuggestions.git
+git clone https://github.com/Pilaton/OhMyZsh-full-autoupdate.git ./ohmyzsh-full-autoupdate
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git
 popd
 
 # Copy .zshrc.
@@ -12,11 +22,6 @@ cp zshrc."$OS" "$HOME"/.zshrc
 chmod 644 "$HOME"/.zshrc
 
 if [ "$OS" == "linux" ]; then
-  # Install zsh-autosuggestions.
-  pushd .
-  cd "$HOME"/.oh-my-zsh/plugins/; git clone https://github.com/zsh-users/zsh-autosuggestions.git
-  popd
-
   # Copy foot.ini
   mkdir -p "$HOME"/.config/foot
   cp ./foot.ini "$HOME"/.config/foot
@@ -40,12 +45,14 @@ if [ "$OS" == "linux" ]; then
   sudo DEBIAN_FRONTEND=noninteractive apt-get update -y
 
   # Install/uninstall packages.
-  sudo DEBIAN_FRONTEND=noninteractive apt install bash-completion btop git neovim lua5.1 acl language-pack-en fzf tmux xclip clang clang-tools clang-tidy clang-format make cmake fortune-mod exa glow gh wcanadian zsh-syntax-highlighting python3-pip cgdb tree shc inotify-tools shellcheck asciinema pv toilet manpages-dev manpages-posix-dev libssl-dev -y
+  sudo DEBIAN_FRONTEND=noninteractive apt install bash-completion btop git neovim lua5.1 acl language-pack-en fzf tmux xclip clang clang-tools clang-tidy clang-format make cmake fortune-mod exa glow gh wcanadian python3-pip cgdb tree shc inotify-tools shellcheck asciinema pv toilet manpages-dev manpages-posix-dev libssl-dev -y
   sudo DEBIAN_FRONTEND=noninteractive apt upgrade -y
 elif [ "$OS" == "darwin" ]; then
   # Copy alacritty.toml.
   mkdir -p "$HOME"/.config/alacritty
   cp alacritty.toml "$HOME"/.config/alacritty/
+  mkdir -p "$HOME"/.config/alacritty/themes
+  git clone https://github.com/alacritty/alacritty-theme "$HOME"/.config/alacritty/themes
 
   # Install Homebrew.
   if [ ! -e "/opt/homebrew/bin/brew" ]; then
@@ -54,10 +61,11 @@ elif [ "$OS" == "darwin" ]; then
   fi
 
   # Install packages.
+  brew tap homebrew/cask-fonts
   brew install --cask arc
   brew install --cask alacritty
   brew install --cask mactex-no-gui
-  brew install neovim fzf tmux gh zsh-syntax-highlighting zsh-autosuggestions
+  brew install neovim fzf tmux gh font-meslo-lg-nerd-font
 fi
 
 # Copy .tmux.conf.
@@ -86,8 +94,8 @@ popd
 
 # Copy Neovim config files (init.vim and config.lua).
 mkdir -p "$HOME"/.config/nvim/lua
-cp ./init.vim."$OS" "$HOME"/.config/nvim/
-cp ./config.lua."$OS" "$HOME"/.config/nvim/lua/
+cp ./init.vim "$HOME"/.config/nvim/init.vim
+cp ./config.lua "$HOME"/.config/nvim/lua/config.lua
 
 # Copy a customized solarized theme for lightline with the right permissions.
 cp ./solarizedmine.vim "$HOME"/.local/share/nvim/site/pack/plugins/start/lightline.vim/autoload/lightline/colorscheme/
