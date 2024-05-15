@@ -4,11 +4,6 @@ plugins=(vi-mode fzf gh git colored-man-pages zsh-autosuggestions ohmyzsh-full-a
 ZSH_AUTOSUGGEST_STRATEGY=(history completion)
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=10"
 source $ZSH/oh-my-zsh.sh
-export EDITOR=`which nvim`
 ulimit -S -n 262144
-export SHELL=$(which zsh)
 export TERM=xterm-256color
-export PATH=$PATH:$HOME/.local/bin
 ulimit -c unlimited # enable core dumps
-export CC=$(which clang)
-export CXX=$(which clang++)

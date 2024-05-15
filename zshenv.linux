@@ -1,1 +1,4 @@
 export EDITOR=`which nvim`
+export PATH=$PATH:$HOME/.local/bin
+export CC=$(which clang)
+export CXX=$(which clang++)
