@@ -17,9 +17,11 @@ git clone https://github.com/Pilaton/OhMyZsh-full-autoupdate.git ./ohmyzsh-full-
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git
 popd
 
-# Copy .zshrc.
+# Copy .zshrc and .zshenv.
 cp zshrc."$OS" "$HOME"/.zshrc
 chmod 644 "$HOME"/.zshrc
+cp zshenv."$OS" "$HOME"/.zshenv
+chmod 644 "$HOME"/.zshenv
 
 if [ "$OS" == "linux" ]; then
   # Copy foot.ini
